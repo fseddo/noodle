@@ -1,12 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import Link from "next/link";
+
+const subscribeNoop = () => () => {};
 
 /**
  * A back-link to a listing page that restores the filters the user left it with. The listing caches its
- * filter query string in `sessionStorage`; this reads it after mount and points the link at `base?<cached>`.
- * Falls back to the bare `base` (no cache, or direct navigation), and starts there to avoid a hydration mismatch.
+ * filter query string in `sessionStorage`; on the client the link points at `base?<cached>`. The server
+ * snapshot is the bare `base`, so hydration matches and the cached query swaps in afterwards.
  */
 export const FilteredBackLink = ({
   base,
@@ -19,12 +21,12 @@ export const FilteredBackLink = ({
   className?: string;
   children: React.ReactNode;
 }) => {
-  const [href, setHref] = useState(base);
-
-  useEffect(() => {
-    const cached = window.sessionStorage.getItem(cacheKey);
-    setHref(cached ? `${base}?${cached}` : base);
-  }, [base, cacheKey]);
+  const cached = useSyncExternalStore(
+    subscribeNoop,
+    () => window.sessionStorage.getItem(cacheKey),
+    () => null,
+  );
+  const href = cached ? `${base}?${cached}` : base;
 
   return (
     <Link href={href} className={className}>

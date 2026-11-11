@@ -55,6 +55,7 @@ import { loadBalancers } from "./loadBalancers";
 import { loadBalancingAlgorithms } from "./loadBalancingAlgorithms";
 import { dnsLoadBalancing } from "./dnsLoadBalancing";
 import { anycastRouting } from "./anycastRouting";
+import { whatIsCaching } from "./whatIsCaching";
 
 /**
  * The learning bank, keyed by slug, in study-plan order: data structures, then algorithms/techniques,
@@ -127,6 +128,8 @@ export const topics = {
   "load-balancing-algorithms": loadBalancingAlgorithms,
   "dns-load-balancing": dnsLoadBalancing,
   "anycast-routing": anycastRouting,
+  // System design — Caching
+  "what-is-caching": whatIsCaching,
 } satisfies Record<string, LearnTopic>;
 
 export type TopicSlug = keyof typeof topics;

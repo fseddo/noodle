@@ -201,6 +201,16 @@ axis, it is a Mechanism page whose `techniques` happens to be a table.
 **For `interviewAngle`: name the passage the bullet would be redundant with if the reader had already read
 it.** The same shape as the `pitfalls` falsifier, and it caught two recycled bullets on its first outing.
 
+**For `cornerCases`: name the passage that would have to be deleted for the bullet to carry new information.**
+§4 separates `cornerCases` from `pitfalls` only by a definition an author can satisfy by adjusting tone, so
+this is the part where duplication hides longest. On a chapter-07 page it returned the `tradeoffs` row the
+bullet was silently restating.
+
+**A falsifier's answer often belongs to a different criterion than the one you were asked about.** The
+chapter-07 cold-cache bullet was raised as possible annexation (§7.21); the falsifier showed the duplication
+was with the page's *own* `tradeoffs` part, making it §7.13 — and the fix was to cut the tradeoffs cells, not
+the bullet. Follow the answer, not the question.
+
 **A further falsifier, at row level, because the part-level ones cannot see the defect they miss.** For every
 `tradeoffs` row: *does it name a cost stated nowhere else on the page, with a condition under which it bites?*
 A chapter-02 page passed both part-level falsifiers — it had a real adoption decision and a real recognition
